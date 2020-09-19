@@ -1,0 +1,20 @@
+extends layouts/app
+
+block seo
+    Title Add New Record
+
+block content
+    .card-body
+        form
+            .form-group
+                label(for='name') Name
+                input#workerName.form-control.mb-4(type='text', placeholder='Name')
+            .form-group
+                label(for='trade') Trade
+                input#workerTrade.form-control.mb-4(type='text', placeholder='Trade')
+            .form-group
+                label(for='workerNumber') Phone Number
+                input#workerNumber.form-control.mb-4(type='tel', value='1-(555)-555-5555')
+            button.btn.btn-primary(type='submit') Submit
+        
+    block script

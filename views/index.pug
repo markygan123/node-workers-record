@@ -1,0 +1,51 @@
+extends layouts/app 
+
+block seo
+    Title Plant Workers Record
+
+block content
+    a.btn.btn-sm.btn-primary.mb-3(href='/newLog') Add New Record
+    table.table.table-dark
+        thead
+            tr
+                th(scope='col') #
+                th(scope='col') Name
+                th(scope='col') Trade
+                th(scope='col') Phone Number
+                th(scope='col') Action
+        tbody
+            tr
+                th(scope='row') 1
+                td Mark Otto
+                td Laborer
+                td 225-200-3178
+                td
+                    button.btn.btn-primary.btn-sm.mr-1(type='submit') Edit
+                    button.btn.btn-danger.btn-sm(type='submit') Delete
+            tr
+                th(scope='row') 2
+                td Jacob Thornton
+                td Pipe Fitter
+                td 225-201-1098
+                td
+                    button.btn.btn-primary.btn-sm.mr-1(type='submit') Edit
+                    button.btn.btn-danger.btn-sm(type='submit') Delete
+            tr
+                th(scope='row') 3
+                td Larry The Bird
+                td Welder
+                td 337-214-1710
+                td
+                    button.btn.btn-primary.btn-sm.mr-1(type='submit') Edit
+                    button.btn.btn-danger.btn-sm(type='submit') Delete
+            tr
+                th(scope='row') 4
+                td Dennis Scott
+                td Electrician
+                td 337-214-1710
+                td
+                    button.btn.btn-primary.btn-sm.mr-1(type='submit') Edit
+                    button.btn.btn-danger.btn-sm(type='submit') Delete
+
+
+    block script

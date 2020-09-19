@@ -1,15 +1,17 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
+const routes = require('./routes');
 
 
 
 
 
-app.get('/', (req, res) => {
-    return res.render('../assets/views/index.pug');
-});
+// routes
+app.use('/', routes);
 
+
+// Template Engine
 app.set('view engine', 'pug');
 
 

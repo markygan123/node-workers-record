@@ -8,7 +8,7 @@ const DB = mysql.createPool({
     multipleStatements: true
 });
 
-DB.connect(error => {
+DB.getConnection((error, connection) => {
     if (!error) {
         console.log('Database connection successful');
     } else {

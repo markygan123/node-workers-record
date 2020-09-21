@@ -5,16 +5,16 @@ block seo
 
 block content
     .card-body
-        form
+        form(action="/newRecord" method="POST")
             .form-group
                 label(for='name') Name
-                input#workerName.form-control.mb-4(type='text', placeholder='Name')
+                input#workerName.form-control.mb-4(type='text' name='name' placeholder='Name' required)
             .form-group
                 label(for='trade') Trade
-                input#workerTrade.form-control.mb-4(type='text', placeholder='Trade')
+                input#workerTrade.form-control.mb-4(type='text' name='trade' placeholder='Trade' required)
             .form-group
                 label(for='workerNumber') Phone Number
-                input#workerNumber.form-control.mb-4(type='tel', value='1-(555)-555-5555')
+                input#workerNumber.form-control.mb-4(type='tel' name='phone_no' value='1-(555)-555-5555' required)
             button.btn.btn-primary(type='submit') Submit
         
     block script

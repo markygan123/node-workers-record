@@ -1,0 +1,20 @@
+extends layouts/app
+
+block seo
+    Title Edit Worker Information
+
+block content
+    .card-body
+        form(action=`/deleteRecord/${id}/delete` method="GET")
+            .form-group
+                label(for='name') Name
+                input#workerName.form-control.mb-4(type='text' name='name' value=`${name}` readonly)
+            .form-group
+                label(for='trade') Trade
+                input#workerTrade.form-control.mb-4(type='text' name='trade' value=`${trade}` readonly)
+            .form-group
+                label(for='workerNumber') Phone Number
+                input#workerNumber.form-control.mb-4(type='tel' name='phone_no' value=`${phone_no}` readonly)
+            button.btn.btn-danger(type='submit') Confirm Delete
+        
+    block script

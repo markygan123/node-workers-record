@@ -5,7 +5,7 @@ block seo
 
 block content
     .card-body
-        form(action="/newRecord" method="POST")
+        form(action="/newRecord" method="POST" autocomplete="off")
             .form-group
                 label(for='name') Name
                 input#workerName.form-control.mb-4(type='text' name='name' placeholder='Name' required)
@@ -14,7 +14,7 @@ block content
                 input#workerTrade.form-control.mb-4(type='text' name='trade' placeholder='Trade' required)
             .form-group
                 label(for='workerNumber') Phone Number
-                input#workerNumber.form-control.mb-4(type='tel' name='phone_no' value='1-(555)-555-5555' required)
+                input#workerNumber.form-control.mb-4(type='text' name='phone_no' value='1-(555)-555-5555' required)
             button.btn.btn-primary(type='submit') Submit
         
     block script

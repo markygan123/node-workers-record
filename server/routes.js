@@ -94,7 +94,6 @@ router.get('/deleteRecord/:id', (req, res) => {
 
 
 router.get('/deleteRecord/:id/delete', (req, res) => {
-    const post = req.body;
     DB.query(`DELETE FROM workers WHERE id = ${req.params.id}`, (error, result) => {
         if (error) {
             console.log('Error: ');

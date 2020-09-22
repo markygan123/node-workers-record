@@ -4,6 +4,8 @@ block seo
     Title Add New Record
 
 block content
+    .card-header
+        h1 Add New Record
     .card-body
         form(action="/newRecord" method="POST" autocomplete="off")
             .form-group
@@ -14,7 +16,7 @@ block content
                 input#workerTrade.form-control.mb-4(type='text' name='trade' placeholder='Trade' required)
             .form-group
                 label(for='workerNumber') Phone Number
-                input#workerNumber.form-control.mb-4(type='text' name='phone_no' value='1-(555)-555-5555' required)
+                input#workerNumber.form-control.mb-4(type='text' name='phone_no' value='(555)-555-5555' required)
             button.btn.btn-primary(type='submit') Submit
         
     block script

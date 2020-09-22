@@ -4,24 +4,32 @@ block seo
     Title Plant Workers Record
 
 block content
-    a.btn.btn-sm.btn-primary.mb-3(href='/newRecord') Add New Record
-    table.table.table-dark
-        thead
-            tr
-                th(scope='col') #
-                th(scope='col') Name
-                th(scope='col') Trade
-                th(scope='col') Phone Number
-                th(scope='col') Action
-        tbody
-            for worker in workers
+    .card-header
+        h1 Plant Workers Record
+    .card-body
+        nav.navbar.navbar-light.bg-light.justify-content-between
+            a.btn.btn-primary.mt-3.mb-3(href='/newRecord') Add New Record
+            form.form-inline
+                input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
+                button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+        
+        table.table.table-dark
+            thead
                 tr
-                    td= worker.id
-                    td= worker.name
-                    td= worker.trade
-                    td= worker.phone_no
-                    td
-                        a.btn.btn-sm.btn-primary.mr-2(href=`/editRecord/${worker.id}`) Edit
-                        a.btn.btn-sm.btn-danger(href=`/deleteRecord/${worker.id}`) Delete
+                    th(scope='col') #
+                    th(scope='col') Name
+                    th(scope='col') Trade
+                    th(scope='col') Phone Number
+                    th(scope='col') Action
+            tbody
+                for worker in workers
+                    tr
+                        td= worker.id
+                        td= worker.name
+                        td= worker.trade
+                        td= worker.phone_no
+                        td
+                            a.btn.btn-sm.btn-primary.mr-2(href=`/editRecord/${worker.id}`) Edit
+                            a.btn.btn-sm.btn-danger(href=`/deleteRecord/${worker.id}`) Delete
 
-    block script
+        block script

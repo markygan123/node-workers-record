@@ -22,14 +22,18 @@ block content
                     th(scope='col') Phone Number
                     th(scope='col') Action
             tbody
-                for worker in workers
+                if workers.length === 0
                     tr
-                        td= worker.id
-                        td= worker.name
-                        td= worker.trade
-                        td= worker.phone_no
-                        td
-                            a.btn.btn-sm.btn-primary.mr-2(href=`/editRecord/${worker.id}`) Edit
-                            a.btn.btn-sm.btn-danger(href=`/deleteRecord/${worker.id}`) Delete
+                        td(colspan='5' style='text-align:center') No Data Available
+                else
+                    for worker in workers
+                        tr
+                            td= worker.id
+                            td= worker.name
+                            td= worker.trade
+                            td= worker.phone_no
+                            td
+                                a.btn.btn-sm.btn-primary.mr-2(href=`/editRecord/${worker.id}`) Edit
+                                a.btn.btn-sm.btn-danger(href=`/deleteRecord/${worker.id}`) Delete
 
         block script

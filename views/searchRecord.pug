@@ -9,8 +9,8 @@ block content
     .card-body
         nav.navbar.navbar-light.bg-light.justify-content-between
             a.btn.btn-primary.mt-3.mb-3(href='/') Return to Home
-            form.form-inline
-                input.form-control.mr-sm-2(type='search' placeholder='Search')
+            form.form-inline(action='/searchRecord/:searchVal', method='POST')
+                input.form-control.mr-sm-2(type='search' name='searchVal' placeholder='Search' required) 
                 button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
         
         table.table.table-dark
@@ -22,14 +22,18 @@ block content
                     th(scope='col') Phone Number
                     th(scope='col') Action
             tbody
-                for worker in workers
+                if workers.length === 0
                     tr
-                        td= worker.id
-                        td= worker.name
-                        td= worker.trade
-                        td= worker.phone_no
-                        td
-                            a.btn.btn-sm.btn-primary.mr-2(href=`/editRecord/${worker.id}`) Edit
-                            a.btn.btn-sm.btn-danger(href=`/deleteRecord/${worker.id}`) Delete
+                        td(colspan='5' style='text-align:center') Data Not Found
+                else
+                    for worker in workers
+                        tr
+                            td= worker.id
+                            td= worker.name
+                            td= worker.trade
+                            td= worker.phone_no
+                            td
+                                a.btn.btn-sm.btn-primary.mr-2(href=`/editRecord/${worker.id}`) Edit
+                                a.btn.btn-sm.btn-danger(href=`/deleteRecord/${worker.id}`) Delete
 
         block script

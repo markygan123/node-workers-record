@@ -108,7 +108,8 @@ router.get('/deleteRecord/:id/delete', (req, res) => {
 
 router.post('/searchRecord/:searchVal', (req, res) => {
     const worker = req.body;
-    DB.query(`SELECT * FROM workers WHERE name LIKE '%${worker.searchVal}%'`, (error, result) => {
+    DB.query(`SELECT * FROM workers WHERE name LIKE '%${worker.searchVal}%'
+                 or trade LIKE '%${worker.searchVal}%' or phone_no LIKE '%${worker.searchVal}%'`, (error, result) => {
         if (error) {
             console.log('Error: ');
             console.log(error);

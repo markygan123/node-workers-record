@@ -1,0 +1,31 @@
+extends layouts/app
+
+block seo
+    Title Add New Record
+
+block content
+    .card-header
+        h1 Add New Record
+    .card-body
+        form(action="/addRecord" method="POST" autocomplete="off")
+            .form-group
+                label(for='name') Name
+                input#workerName.form-control.mb-4(type='text' name='name' placeholder='Name' required)
+            .form-group
+                label(for='trade') Trade
+                select.custom-select(name='trade')
+                    option(selected='') Select Trade
+                    option(name='Laborer' value='1') Laborer
+                    option(name='Scaffolder' value='2') Scaffolder
+                    option(name='Helper' value='3') Helper
+                    option(name='Boiler Maker' value='4') Boiler Maker
+                    option(name='Electrician' value='5') Electrician
+                    option(name='Pipe Fitter' value='6') Pipe Fitter
+                    option(name='Welder' value='7') Welder
+
+            .form-group
+                label(for='workerNumber') Phone Number
+                input#workerNumber.form-control.mb-4(type='text' name='phone_no' value='(555) 555-5555' required)
+            button.btn.btn-primary(type='submit') Submit
+        
+    block script

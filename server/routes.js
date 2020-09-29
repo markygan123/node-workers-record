@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
             }
         }
     );
-    // return res.render('../views/index.pug');
 });
 
 router.get('/newRecord', (req, res) => {
@@ -37,6 +36,33 @@ router.post('/newRecord', (req, res) => {
                         return res.redirect('/');
                     }
                 });
+});
+
+
+router.get('/addRecord', (req, res) => {
+    return res.render('addRecord');
+});
+
+router.post('/addRecord', (req, res) => {
+    const record = req.body;
+    DB.query(`SELECT * FROM trades WHERE trade_id = ${record.trade}`, (error, results, fields) => {
+        if (error) {
+            console.log('Error: ');
+            console.log(error);
+        } else {
+            const trade = results[0].trade_name;
+            DB.query(`INSERT INTO workers (name, trade, phone_no)
+                VALUES ('${record.name}', '${trade}', '${record.phone_no}')`, (error, results, fields) => {
+                    if (error) {
+                        console.log('Error: ');
+                        console.log(error);
+                        return res.redirect('/addRecord');
+                    } else {
+                        return res.redirect('/');
+                    }
+                });
+        }
+    });
 });
 
 
@@ -119,7 +145,6 @@ router.post('/searchRecord/:searchVal', (req, res) => {
             });
         }
     })
-    // console.log(req.body);
 });
 
 

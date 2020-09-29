@@ -10,8 +10,17 @@ const routes = require('./routes');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+
 // routes
 app.use('/', routes);
+
+
+// catch 404 
+app.use((req, res, next) => {
+    res.status(404).render('404', {
+        title: '404 Error'
+    });
+});
 
 
 // Template Engine

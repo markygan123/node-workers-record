@@ -1,0 +1,14 @@
+extends layouts/app
+
+block seo
+    Title= title 
+
+block content
+    .card
+        .card-header
+            h1 Page Not Found
+        .card-body
+            p This page isn't available
+            a.btn.btn-primary.mt-3.mb-3(href='/') Return to Home
+            
+        block script

@@ -22,27 +22,6 @@ router.get('/', (req, res) => {
     );
 });
 
-// router.get('/newRecord', (req, res) => {
-//     return res.render('../views/newRecord.pug', {
-//         title: 'Add New Worker',
-//         h1: 'Add New Worker',
-//     });
-// });
-
-// router.post('/newRecord', (req, res) => {
-//     const record = req.body;
-//     DB.query(`INSERT INTO workers (name, trade, phone_no)
-//                 VALUES ('${record.name}', '${record.trade}', '${record.phone_no}')`, (error, results, fields) => {
-//                     if (error) {
-//                         console.log('Error: ');
-//                         console.log(error);
-//                         return res.redirect('/newRecord');
-//                     } else {
-//                         return res.redirect('/');
-//                     }
-//                 });
-// });
-
 
 router.get('/addRecord', (req, res) => {
     return res.render('addRecord', {

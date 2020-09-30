@@ -13,6 +13,8 @@ router.get('/', (req, res) => {
                 return res.redirect('/')
             } else {
                 return res.render('index', {
+                    title: 'Plant Workers Record',
+                    h1: 'Plant Workers Record',
                     workers: result
                 });
             }
@@ -20,27 +22,33 @@ router.get('/', (req, res) => {
     );
 });
 
-router.get('/newRecord', (req, res) => {
-    return res.render('../views/newRecord.pug');
-});
+// router.get('/newRecord', (req, res) => {
+//     return res.render('../views/newRecord.pug', {
+//         title: 'Add New Worker',
+//         h1: 'Add New Worker',
+//     });
+// });
 
-router.post('/newRecord', (req, res) => {
-    const record = req.body;
-    DB.query(`INSERT INTO workers (name, trade, phone_no)
-                VALUES ('${record.name}', '${record.trade}', '${record.phone_no}')`, (error, results, fields) => {
-                    if (error) {
-                        console.log('Error: ');
-                        console.log(error);
-                        return res.redirect('/newRecord');
-                    } else {
-                        return res.redirect('/');
-                    }
-                });
-});
+// router.post('/newRecord', (req, res) => {
+//     const record = req.body;
+//     DB.query(`INSERT INTO workers (name, trade, phone_no)
+//                 VALUES ('${record.name}', '${record.trade}', '${record.phone_no}')`, (error, results, fields) => {
+//                     if (error) {
+//                         console.log('Error: ');
+//                         console.log(error);
+//                         return res.redirect('/newRecord');
+//                     } else {
+//                         return res.redirect('/');
+//                     }
+//                 });
+// });
 
 
 router.get('/addRecord', (req, res) => {
-    return res.render('addRecord');
+    return res.render('addRecord', {
+        title: 'Add New Worker',
+        h1: 'Add New Worker'
+    });
 });
 
 router.post('/addRecord', (req, res) => {
@@ -119,6 +127,8 @@ router.get('/deleteRecord/:id', (req, res) => {
             return res.redirect('/');
         } else {
             return res.render('deleteRecord', {
+                title: 'Delete Worker Record',
+                h1: 'Delete Worker Record',
                 id: req.params.id,
                 name: result[0].name,
                 trade: result[0].trade,
@@ -136,7 +146,10 @@ router.get('/deleteRecord/:id/delete', (req, res) => {
             console.log(error);
             return res.redirect(`/deleteRecord/${req.params.id}/delete`);
         } else {
-            return res.redirect(`/`);
+            return res.render(`/`, {
+                title: 'Delete Worker Record',
+                h1: 'Delete Worker Record'
+            });
         }
     });
 });
@@ -151,6 +164,8 @@ router.post('/searchRecord/:searchVal', (req, res) => {
             console.log(error);
         } else {
             res.render('searchRecord', {
+                title: 'Plant Workers Record',
+                h1: 'Plant Workers Record',
                 workers: result            
             });
         }

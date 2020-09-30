@@ -1,11 +1,11 @@
 extends layouts/app
 
 block seo
-    Title Add New Record
+    Title= title
 
 block content
     .card-header
-        h1 Add New Record
+        h1= h1
     .card-body
         form(action="/addRecord" method="POST" autocomplete="off")
             .form-group

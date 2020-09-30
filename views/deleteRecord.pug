@@ -1,12 +1,12 @@
 extends layouts/app
 
 block seo
-    Title Delete Worker Information
+    Title= title
 
 block content
     .card
         .card-header
-            h1 Delete Worker Information
+            h1= h1
         .card-body
             form(action=`/deleteRecord/${id}/delete` method="GET")
                 .form-group

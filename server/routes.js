@@ -74,6 +74,8 @@ router.get('/editRecord/:id', (req, res) => {
             return res.redirect('/');
         } else {
             return res.render('editRecord', {
+                h1: 'Edit Worker Information',
+                title: 'Edit Worker Information',
                 id: req.params.id,
                 name: result[0].name,
                 trade: result[0].trade,
@@ -86,8 +88,14 @@ router.get('/editRecord/:id', (req, res) => {
 
 router.post('/editRecord/:id', (req, res) => {
     const record = req.body;
-    DB.query(`UPDATE workers SET name = '${record.name}',
-                trade = '${record.trade}',
+    DB.query(`SELECT * FROM trades WHERE trade_id = ${record.trade}`, (error, results, fields) => {
+        if (error) {
+            console.log('Error: ');
+            console.log(error);
+        } else {
+            const trade = results[0].trade_name;
+            DB.query(`UPDATE workers SET name = '${record.name}',
+                trade = '${trade}',
                 phone_no = '${record.phone_no}'
                 WHERE id = ${req.params.id}`, (error, result) => {
                     if (error) {
@@ -98,6 +106,8 @@ router.post('/editRecord/:id', (req, res) => {
                         return res.redirect('/')
                     }
                 });
+        }
+    });    
 });
 
 
